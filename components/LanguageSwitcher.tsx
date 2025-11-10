@@ -38,16 +38,20 @@ export function LanguageSwitcher() {
 
     setIsOpen(false)
     startTransition(() => {
-      // Get the path without the current locale prefix
+      // Remove any locale prefix from the current pathname
       let pathWithoutLocale = pathname
-      if (pathname.startsWith(`/${locale}`)) {
-        pathWithoutLocale = pathname.slice(`/${locale}`.length) || "/"
-      } else if (locale === "fr" && pathname === "/") {
-        pathWithoutLocale = "/"
+
+      // Remove /en if present
+      if (pathWithoutLocale.startsWith("/en")) {
+        pathWithoutLocale = pathWithoutLocale.slice(3) || "/"
+      }
+      // Remove /fr if present
+      if (pathWithoutLocale.startsWith("/fr")) {
+        pathWithoutLocale = pathWithoutLocale.slice(3) || "/"
       }
 
-      // Build the new path with the selected locale
-      // Default locale (fr) doesn't need prefix due to localePrefix: "as-needed"
+      // Build the new path
+      // French (default locale) doesn't need prefix due to localePrefix: "as-needed"
       const newPath = newLocale === "fr" ? pathWithoutLocale : `/${newLocale}${pathWithoutLocale}`
 
       router.push(newPath)
