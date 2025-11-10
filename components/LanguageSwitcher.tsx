@@ -1,10 +1,23 @@
 "use client"
 
+import { cva } from "class-variance-authority"
 import { Globe } from "lucide-react"
 import { motion } from "motion/react"
 import { useRouter } from "next/navigation"
 import { useLocale } from "next-intl"
 import { useEffect, useRef, useState, useTransition } from "react"
+
+const languageButtonVariants = cva("w-full px-4 py-2 text-left text-sm transition-colors", {
+  variants: {
+    active: {
+      true: "bg-violet-600/20 text-violet-300",
+      false: "text-gray-300 hover:bg-violet-600/10 hover:text-violet-300",
+    },
+  },
+  defaultVariants: {
+    active: false,
+  },
+})
 
 export function LanguageSwitcher() {
   const locale = useLocale()
@@ -66,9 +79,7 @@ export function LanguageSwitcher() {
         disabled={isPending}
       >
         <Globe className="h-4 w-4 text-violet-400" strokeWidth={2} />
-        <span className="text-violet-300/90 uppercase" style={{ fontSize: "0.875rem", fontWeight: 500 }}>
-          {locale}
-        </span>
+        <span className="text-sm font-medium text-violet-300/90 uppercase">{locale}</span>
       </motion.button>
 
       {isOpen && (
@@ -76,28 +87,17 @@ export function LanguageSwitcher() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          className="absolute top-full right-0 mt-2 overflow-hidden rounded-lg border border-violet-500/30 bg-gray-900/95 backdrop-blur-md"
-          style={{ minWidth: "100px" }}
+          className="absolute top-full right-0 mt-2 min-w-[100px] overflow-hidden rounded-lg border border-violet-500/30 bg-gray-900/95 backdrop-blur-md"
         >
           <button
             onClick={() => handleLanguageChange("en")}
-            className={`w-full px-4 py-2 text-left transition-colors ${
-              locale === "en"
-                ? "bg-violet-600/20 text-violet-300"
-                : "text-gray-300 hover:bg-violet-600/10 hover:text-violet-300"
-            }`}
-            style={{ fontSize: "0.875rem" }}
+            className={languageButtonVariants({ active: locale === "en" })}
           >
             English
           </button>
           <button
             onClick={() => handleLanguageChange("fr")}
-            className={`w-full px-4 py-2 text-left transition-colors ${
-              locale === "fr"
-                ? "bg-violet-600/20 text-violet-300"
-                : "text-gray-300 hover:bg-violet-600/10 hover:text-violet-300"
-            }`}
-            style={{ fontSize: "0.875rem" }}
+            className={languageButtonVariants({ active: locale === "fr" })}
           >
             Français
           </button>

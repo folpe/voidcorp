@@ -38,7 +38,7 @@ export default function Web() {
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <div className="flex-1" />
           <div className="relative h-20 w-[750px]">
-            <Image src={logo} alt={t("header.logoAlt")} fill style={{ objectFit: "contain" }} />
+            <Image src={logo} alt={t("header.logoAlt")} fill className="object-contain" />
           </div>
           <div className="flex flex-1 justify-end">
             <LanguageSwitcher />
@@ -73,11 +73,9 @@ export default function Web() {
             viewport={{ once: true }}
           >
             <div className="mb-8 inline-block rounded-full border border-violet-500/30 px-4 py-1">
-              <span className="tracking-widest text-violet-300/80 uppercase" style={{ fontSize: "0.75rem" }}>
-                {t("manifesto.badge")}
-              </span>
+              <span className="text-xs tracking-widest text-violet-300/80 uppercase">{t("manifesto.badge")}</span>
             </div>
-            <p className="mx-auto max-w-3xl leading-relaxed text-gray-300/90" style={{ fontSize: "1.25rem" }}>
+            <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-300/90">
               {t("manifesto.textBefore")}
               <span className="text-violet-300">{t("manifesto.structuredEmptiness")}</span>
               {t("manifesto.textAfter")}
@@ -96,9 +94,7 @@ export default function Web() {
             viewport={{ once: true }}
             className="mb-20 text-center"
           >
-            <h2 className="font-heading mb-4" style={{ fontSize: "2.5rem" }}>
-              {t("ecosystem.title")}
-            </h2>
+            <h2 className="font-heading mb-4 text-4xl">{t("ecosystem.title")}</h2>
             <p className="text-gray-400">{t("ecosystem.subtitle")}</p>
           </motion.div>
 
@@ -130,9 +126,7 @@ export default function Web() {
             viewport={{ once: true }}
             className="mb-20 text-center"
           >
-            <h2 className="font-heading mb-4" style={{ fontSize: "2.5rem" }}>
-              {t("principle.title")}
-            </h2>
+            <h2 className="font-heading mb-4 text-4xl">{t("principle.title")}</h2>
           </motion.div>
 
           <div className="grid grid-cols-1 gap-16 md:grid-cols-3">
@@ -149,9 +143,7 @@ export default function Web() {
                   <Eye className="h-10 w-10 text-violet-400" strokeWidth={1.5} />
                 </div>
               </div>
-              <h3 className="font-heading mb-3" style={{ fontSize: "1.5rem" }}>
-                {t("principle.observe.title")}
-              </h3>
+              <h3 className="font-heading mb-3 text-2xl">{t("principle.observe.title")}</h3>
               <p className="leading-relaxed text-gray-400/90">{t("principle.observe.description")}</p>
             </motion.div>
 
@@ -168,9 +160,7 @@ export default function Web() {
                   <Pen className="h-10 w-10 text-fuchsia-400" strokeWidth={1.5} />
                 </div>
               </div>
-              <h3 className="font-heading mb-3" style={{ fontSize: "1.5rem" }}>
-                {t("principle.design.title")}
-              </h3>
+              <h3 className="font-heading mb-3 text-2xl">{t("principle.design.title")}</h3>
               <p className="leading-relaxed text-gray-400/90">{t("principle.design.description")}</p>
             </motion.div>
 
@@ -187,9 +177,7 @@ export default function Web() {
                   <Hammer className="h-10 w-10 text-blue-400" strokeWidth={1.5} />
                 </div>
               </div>
-              <h3 className="font-heading mb-3" style={{ fontSize: "1.5rem" }}>
-                {t("principle.forge.title")}
-              </h3>
+              <h3 className="font-heading mb-3 text-2xl">{t("principle.forge.title")}</h3>
               <p className="leading-relaxed text-gray-400/90">{t("principle.forge.description")}</p>
             </motion.div>
           </div>
@@ -238,8 +226,7 @@ export default function Web() {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
               viewport={{ once: true }}
-              className="mx-auto mt-12 max-w-md text-gray-300/80 italic"
-              style={{ fontSize: "1.125rem" }}
+              className="mx-auto mt-12 max-w-md text-lg text-gray-300/80 italic"
             >
               "{t("signature.quote")}"
             </motion.p>
@@ -250,7 +237,7 @@ export default function Web() {
       {/* Footer */}
       <footer className="relative border-t border-gray-800/50 px-8 py-16">
         <div className="mx-auto max-w-6xl text-center">
-          <p className="text-gray-500" style={{ fontSize: "0.875rem" }}>
+          <p className="text-sm text-gray-500">
             © {new Date().getFullYear()} {t("footer.copyright")}
           </p>
         </div>

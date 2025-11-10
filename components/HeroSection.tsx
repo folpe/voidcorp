@@ -1,6 +1,7 @@
 "use client"
 
-import { motion, MotionValue } from "motion/react"
+import { motion, type MotionValue } from "motion/react"
+
 import { useTranslations } from "next-intl"
 
 interface HeroSectionProps {
@@ -198,24 +199,36 @@ export function HeroSection({ opacity }: HeroSectionProps) {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}
-        className="max-w-4xl text-center"
+        className="z-50 max-w-4xl text-center"
       >
         <div className="mb-8 inline-block rounded-full border border-violet-500/30 px-4 py-1">
-          <span className="tracking-widest text-violet-300/80 uppercase" style={{ fontSize: "0.75rem" }}>
-            {t("badge")}
+          <span className="text-xs tracking-widest text-violet-300/80 uppercase">
+            {t("badge.prefix")}{" "}
+            <a
+              href="https://volpio.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-fuchsia-300 decoration-fuchsia-300/30 underline-offset-2 transition-colors hover:text-fuchsia-200 hover:decoration-fuchsia-200/50"
+            >
+              Volpio
+            </a>{" "}
+            {t("badge.and")}{" "}
+            <a
+              href="https://v0rn.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-violet-300 decoration-violet-300/30 underline-offset-2 transition-colors hover:text-violet-200 hover:decoration-violet-200/50"
+            >
+              v0rn
+            </a>
           </span>
         </div>
 
-        <h1
-          className="font-heading mb-6 bg-gradient-to-r from-white via-violet-200 to-fuchsia-200 bg-clip-text text-transparent"
-          style={{ fontSize: "4.5rem", lineHeight: "1.1" }}
-        >
+        <h1 className="font-heading mb-6 bg-gradient-to-r from-white via-violet-200 to-fuchsia-200 bg-clip-text text-7xl leading-tight text-transparent">
           {t("title")}
         </h1>
 
-        <p className="mx-auto max-w-2xl leading-relaxed text-gray-300/70" style={{ fontSize: "1.25rem" }}>
-          {t("description")}
-        </p>
+        <p className="mx-auto max-w-2xl text-xl leading-relaxed text-gray-300/70">{t("description")}</p>
       </motion.div>
 
       {/* Scroll indicator */}
