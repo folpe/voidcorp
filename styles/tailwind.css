@@ -265,20 +265,26 @@ body {
 }
 
 @keyframes rotate-slow {
-  from {
-    transform: rotate(0deg);
+  0% {
+    transform: rotate(0deg) scale(1);
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    transform: rotate(180deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
   }
 }
 
 @keyframes rotate-reverse {
-  from {
-    transform: rotate(360deg);
+  0% {
+    transform: rotate(360deg) scale(1);
   }
-  to {
-    transform: rotate(0deg);
+  50% {
+    transform: rotate(180deg) scale(1.08);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
   }
 }
 
@@ -365,10 +371,12 @@ body {
 
 .animate-rotate-slow {
   animation: rotate-slow 20s linear infinite;
+  transform-origin: center center;
 }
 
 .animate-rotate-reverse {
   animation: rotate-reverse 15s linear infinite;
+  transform-origin: center center;
 }
 
 .animate-orbit {
