@@ -3,7 +3,10 @@
     "logoAlt": "Void Corp"
   },
   "hero": {
-    "badge": "Écosystème parent de Volpio et v0rn",
+    "badge": {
+      "prefix": "Écosystème parent de",
+      "and": "et"
+    },
     "title": "Là où tout commence.",
     "description": "Le centre gravitationnel de la création et de l'innovation."
   },

@@ -202,7 +202,24 @@ export function HeroSection({ opacity }: HeroSectionProps) {
       >
         <div className="mb-8 inline-block rounded-full border border-violet-500/30 px-4 py-1">
           <span className="tracking-widest text-violet-300/80 uppercase" style={{ fontSize: "0.75rem" }}>
-            {t("badge")}
+            {t("badge.prefix")}{" "}
+            <a
+              href="https://volpio.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-fuchsia-300 underline decoration-fuchsia-300/30 underline-offset-2 transition-colors hover:text-fuchsia-200 hover:decoration-fuchsia-200/50"
+            >
+              Volpio
+            </a>{" "}
+            {t("badge.and")}{" "}
+            <a
+              href="https://v0rn.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-violet-300 underline decoration-violet-300/30 underline-offset-2 transition-colors hover:text-violet-200 hover:decoration-violet-200/50"
+            >
+              v0rn
+            </a>
           </span>
         </div>
 
