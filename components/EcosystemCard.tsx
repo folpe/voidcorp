@@ -1,7 +1,20 @@
 "use client"
 
+import { cva } from "class-variance-authority"
 import { motion } from "motion/react"
 import { useTranslations } from "next-intl"
+
+const descriptionVariants = cva("leading-relaxed text-gray-400", {
+  variants: {
+    placeholder: {
+      true: "italic",
+      false: "",
+    },
+  },
+  defaultVariants: {
+    placeholder: false,
+  },
+})
 
 interface EcosystemCardProps {
   cardKey: string
@@ -37,21 +50,16 @@ export function EcosystemCard({ cardKey, gradient, delay, isPlaceholder, navigat
         </div>
 
         {/* Text */}
-        <h3
-          className="font-heading mb-3 transition-colors duration-300 group-hover:text-white"
-          style={{ fontSize: "1.75rem" }}
-        >
+        <h3 className="font-heading mb-3 text-3xl transition-colors duration-300 group-hover:text-white">
           {t("name")}
         </h3>
-        <p className={`leading-relaxed text-gray-400 ${isPlaceholder ? "italic" : ""}`}>{t("description")}</p>
+        <p className={descriptionVariants({ placeholder: isPlaceholder })}>{t("description")}</p>
 
         {/* Status indicator for placeholder */}
         {isPlaceholder && (
           <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-gray-700/50 bg-gray-800/30 px-3 py-1">
             <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-gray-500" />
-            <span className="text-gray-500" style={{ fontSize: "0.75rem" }}>
-              {tCommon("comingSoon")}
-            </span>
+            <span className="text-xs text-gray-500">{tCommon("comingSoon")}</span>
           </div>
         )}
       </div>
