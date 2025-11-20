@@ -3,9 +3,10 @@
 import { cva } from "class-variance-authority"
 import { Globe } from "lucide-react"
 import { motion } from "motion/react"
-import { useRouter } from "next/navigation"
 import { useLocale } from "next-intl"
 import { useEffect, useRef, useState, useTransition } from "react"
+
+import { usePathname, useRouter } from "@/navigation"
 
 const languageButtonVariants = cva("w-full px-4 py-2 text-left text-sm transition-colors", {
   variants: {
@@ -22,6 +23,7 @@ const languageButtonVariants = cva("w-full px-4 py-2 text-left text-sm transitio
 export function LanguageSwitcher() {
   const locale = useLocale()
   const router = useRouter()
+  const pathname = usePathname()
   const [isPending, startTransition] = useTransition()
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -50,22 +52,7 @@ export function LanguageSwitcher() {
 
     setIsOpen(false)
     startTransition(() => {
-      // Get the current browser pathname (includes locale prefix)
-      const currentPath = window.location.pathname
-
-      // Remove any locale prefix to get the base path
-      let basePath = currentPath
-      if (currentPath.startsWith("/en")) {
-        basePath = currentPath.slice(3) || "/"
-      } else if (currentPath.startsWith("/fr")) {
-        basePath = currentPath.slice(3) || "/"
-      }
-
-      // Build the new path based on the target locale
-      // French (default locale) doesn't need prefix due to localePrefix: "as-needed"
-      const newPath = newLocale === "fr" ? basePath : `/${newLocale}${basePath}`
-
-      router.push(newPath)
+      router.replace(pathname, { locale: newLocale })
     })
   }
 
