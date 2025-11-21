@@ -51,7 +51,7 @@
     "@vercel/otel": "^1.14.0",
     "class-variance-authority": "^0.7.1",
     "lodash": "^4.17.21",
-    "lucide-react": "^0.553.0",
+    "lucide-react": "^0.554.0",
     "motion": "^12.23.24",
     "next": "15.5.6",
     "next-intl": "^4.5.3",
