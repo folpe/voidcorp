@@ -13,11 +13,26 @@ const config: NextConfig = {
       fullUrl: true,
     },
   },
+  // This is required to support PostHog trailing slash API requests
+  skipTrailingSlashRedirect: true,
   rewrites: async () => [
     { source: "/healthz", destination: "/api/health" },
     { source: "/api/healthz", destination: "/api/health" },
     { source: "/health", destination: "/api/health" },
     { source: "/ping", destination: "/api/health" },
+    // PostHog rewrites - order matters: specific routes first
+    {
+      source: "/ingest/static/:path*",
+      destination: "https://eu-assets.i.posthog.com/static/:path*",
+    },
+    {
+      source: "/ingest/decide",
+      destination: "https://eu.i.posthog.com/decide",
+    },
+    {
+      source: "/ingest/:path*",
+      destination: "https://eu.i.posthog.com/:path*",
+    },
   ],
 }
 
